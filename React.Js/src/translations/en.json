@@ -72,5 +72,20 @@
             "choose": "Choose ",
             "book-free": " and book (free)"
         }
+    },
+    "admin": {
+        "manage-doctor": {
+            "title": "Create more information doctors",
+            "select-doctor": "Select doctor",
+            "intro": "Introduction",
+            "add": "Create Infor",
+            "save": "Save infor",
+            "price": "Price",
+            "payment": "Payment",
+            "province": "Province",
+            "nameClinic": "Clinic's name",
+            "addressClinic": "Clinic's address",
+            "note": "Note"
+        }
     }
 }
