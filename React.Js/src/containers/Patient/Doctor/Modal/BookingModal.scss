@@ -1,11 +1,12 @@
 .booking-modal-container {
+    padding-top: 55px;
+
     .booking-modal-content {
-        height: 500px;
         display: flex;
         flex-direction: column;
 
         .booking-modal-header {
-            padding: 10px;
+            padding: 10px ;
             border-bottom: 1px solid #ccc;
 
             .left {
@@ -28,7 +29,6 @@
 
         .booking-modal-footer {
             padding: 10px;
-            border-top: 1px solid #ccc;
             display: flex;
             justify-content: flex-end;
             gap: 15px;
