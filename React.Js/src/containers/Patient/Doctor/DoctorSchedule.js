@@ -53,7 +53,7 @@ class DoctorSchedule extends Component {
                     let today = `Today - ${ddMM}`;
                     object.label = today;
                 } else {
-                    object.label = moment(new Date()).add(i, 'days').locale('en').format('dddd - DD/MM');
+                    object.label = moment(new Date()).add(i, 'days').locale('en').format('ddd - DD/MM');
                 }
             }
             object.value = moment(new Date()).add(i, 'days').startOf('day').valueOf();

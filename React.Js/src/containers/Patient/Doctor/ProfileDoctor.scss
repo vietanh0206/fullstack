@@ -3,7 +3,9 @@
         display: flex;
 
         .content-left {
-            background: center center no-repeat;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             width: 100px;
             height: 100px;
             border-radius: 50%; 
