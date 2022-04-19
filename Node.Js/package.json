@@ -19,7 +19,9 @@
     "express-load": "^1.1.16",
     "lodash": "^4.17.21",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.6.2"
+    "nodemailer": "6.6.3",
+    "sequelize": "^6.6.2",
+    "uuid": "8.3.2"
   },
   "repository": {
     "type": "git",

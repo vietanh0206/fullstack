@@ -14,13 +14,16 @@ module.exports = {
       doctorId: {
         type: Sequelize.INTEGER
       },
-      patientID: {
+      patientId: {
         type: Sequelize.INTEGER
       },
       date: {
         type: Sequelize.STRING
       },
       timeType: {
+        type: Sequelize.STRING
+      },
+      token: {
         type: Sequelize.STRING
       },
       createdAt: {
