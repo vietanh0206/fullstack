@@ -2,7 +2,7 @@
     "homeheader": {
         "speciality": "Chuyên khoa",
         "searchdoctor": "Tìm bác sĩ theo chuyên khoa",
-        "health-facility":  "Cơ sở y tế",
+        "health-facility": "Cơ sở y tế",
         "select-room": "Chọn bệnh viện phòng khám",
         "doctor": "Bác sĩ",
         "select-doctor": "Chọn bác sĩ giỏi",
@@ -36,7 +36,7 @@
             "handbook": "Cẩm nang",
             "manage-handbook": "Quản lý cẩm nang"
         },
-        "doctor" : {
+        "doctor": {
             "manage-schedule": "Quản lý kế hoạch khám bệnh"
         }
     },
@@ -44,7 +44,7 @@
         "add": "Thêm mới người dùng",
         "email": "Email",
         "password": "Mật khẩu",
-        "first-name":"Tên",
+        "first-name": "Tên",
         "last-name": "Họ",
         "phone-number": "Số điện thoại",
         "address": "Địa chỉ",
@@ -60,7 +60,6 @@
         "more-information": "Xem thêm",
         "specialty-popular": "Chuyên khoa phổ biến"
     },
-    
     "manage-schedule": {
         "title": "Quản lý kế hoạch khám bệnh của bác sĩ",
         "choose-doctor": "Chọn Bác Sĩ",
@@ -108,7 +107,9 @@
             "province": "Tỉnh thành",
             "nameClinic": "Tên phòng khám",
             "addressClinic": "Địa chỉ phòng khám",
-            "note": "Ghi chú"
+            "note": "Ghi chú",
+            "select-specialty": "Chọn chuyên khoa",
+            "select-clinic": "Chọn phòng khám"
         }
     }
 }

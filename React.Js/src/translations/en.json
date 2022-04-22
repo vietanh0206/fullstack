@@ -22,7 +22,7 @@
         "child6": "Dental examination",
         "child7": "medical products"
     },
-    "menu": { 
+    "menu": {
         "admin": {
             "manage-user": "Users System",
             "manage-doctor": "Manage doctors",
@@ -34,9 +34,9 @@
             "specialty": "Specialties",
             "manage-specialty": "Manage specialties",
             "handbook": "Handbook",
-            "manage-handbook": "Manage handbook"  
+            "manage-handbook": "Manage handbook"
         },
-        "doctor" : {
+        "doctor": {
             "manage-schedule": "Manage Doctor's schedule"
         }
     },
@@ -44,7 +44,7 @@
         "add": "Add a new user ",
         "email": "Email",
         "password": "Password",
-        "first-name":"First name",
+        "first-name": "First name",
         "last-name": "Last name",
         "phone-number": "Phone number",
         "address": "Address",
@@ -92,7 +92,7 @@
             "btnConfirm": "Confirm",
             "btnCancel": "Cancel",
             "priceBooking": "Free booking",
-            "price":"Price: "
+            "price": "Price: "
         }
     },
     "admin": {
@@ -107,7 +107,9 @@
             "province": "Province",
             "nameClinic": "Clinic's name",
             "addressClinic": "Clinic's address",
-            "note": "Note"
+            "note": "Note",
+            "select-specialty": "Specialty",
+            "select-clinic": "Clinic"
         }
     }
 }

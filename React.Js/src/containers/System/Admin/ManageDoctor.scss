@@ -1,5 +1,7 @@
 .manage-doctor-container {
     padding: 5px;
+    overflow-y: visible;
+
 
     .manage-doctor-title {
         text-align: center;
@@ -53,5 +55,10 @@
         .content-right {
             width: 60%;
         }
+    }
+
+    ::-webkit-scrollbar {
+        overflow: scroll;
+        overflow-y: hidden
     }
 }

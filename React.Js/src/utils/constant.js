@@ -5,6 +5,7 @@ export const path = {
     LOG_OUT: '/logout',
     SYSTEM: '/system',
     DETAIL_DOCTOR: '/detail-doctor/:id',
+    DETAIL_SPECIALTY: '/detail-specialty/:id',
     VERIFY_EMAIL_BOOKING: '/verify-booking',
 };
 
@@ -12,7 +13,7 @@ export const LANGUAGES = {
     VI: 'vi',
     EN: 'en'
 };
- 
+
 export const CRUD_ACTIONS = {
     CREATE: "CREATE",
     EDIT: "EDIT",

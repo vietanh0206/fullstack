@@ -1,8 +1,8 @@
 import actionTypes from "./actionTypes"
-import { 
+import {
     getAllCodeService, createNewUserService, getAllUsers,
     deleteUserService, editUserService, getTopDoctorHomeService,
-    getAllDoctors, saveDetailDoctorService
+    getAllDoctors, saveDetailDoctorService, getAllSpecialty
 } from "../../services/userService";
 import { toast } from "react-toastify";
 import { update } from "lodash";
@@ -10,7 +10,7 @@ import { update } from "lodash";
 export const fetchGenderStart = () => {
     return async (dispatch, getState) => {
         try {
-            dispatch({ type: actionTypes.FETCH_GENDER_START})
+            dispatch({ type: actionTypes.FETCH_GENDER_START })
             let res = await getAllCodeService('GENDER');
             if (res && res.errCode === 0) {
                 dispatch(fetchGenderSuccess(res.data))
@@ -113,7 +113,7 @@ export const fetchAllUsersStart = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getAllUsers("All");
-            
+
             if (res && res.errCode === 0) {
                 dispatch(fetchAllUsersSuccess(res.users.reverse()))
             } else {
@@ -201,7 +201,7 @@ export const fetchTopDoctor = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getTopDoctorHomeService('');
-            if (res && res.errCode === 0){
+            if (res && res.errCode === 0) {
                 dispatch({
                     type: actionTypes.FETCH_TOP_DOCTORS_SUCCESS,
                     dataDoctors: res.data
@@ -224,7 +224,7 @@ export const fetchAllDoctors = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getAllDoctors();
-            if (res && res.errCode === 0){
+            if (res && res.errCode === 0) {
                 dispatch({
                     type: actionTypes.FETCH_ALL_DOCTORS_SUCCESS,
                     dataDr: res.data
@@ -246,7 +246,7 @@ export const saveDetailDoctor = (data) => {
     return async (dispatch, getState) => {
         try {
             let res = await saveDetailDoctorService(data);
-            if (res && res.errCode === 0){
+            if (res && res.errCode === 0) {
                 toast.success("Save Infor Detail Doctor Succedd!");
                 dispatch({
                     type: actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS,
@@ -273,7 +273,7 @@ export const fetchAllScheduleTime = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getAllCodeService("TIME");
-            if (res && res.errCode === 0){
+            if (res && res.errCode === 0) {
                 dispatch({
                     type: actionTypes.FETCH_ALLCODE_SCHEDULE_TIME_SUCCESS,
                     dataTime: res.data
@@ -294,20 +294,23 @@ export const fetchAllScheduleTime = () => {
 export const getRequiredDoctorInfor = () => {
     return async (dispatch, getState) => {
         try {
-            dispatch({ type: actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_START})
+            dispatch({ type: actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_START })
 
             let resPrice = await getAllCodeService('PRICE');
             let resPayment = await getAllCodeService('PAYMENT');
             let resProvince = await getAllCodeService('PROVINCE');
+            let resSpecialty = await getAllSpecialty();
 
             if (resPrice && resPrice.errCode === 0
                 && resPayment && resPayment.errCode === 0
-                && resProvince && resProvince.errCode === 0) 
-            {
+                && resProvince && resProvince.errCode === 0
+                && resSpecialty && resSpecialty.errCode === 0
+            ) {
                 let data = {
                     resPrice: resPrice.data,
                     resPayment: resPayment.data,
                     resProvince: resProvince.data,
+                    resSpecialty: resSpecialty.data
                 }
                 dispatch(fetchRequiredDoctorInforSuccess(data))
             } else {
@@ -324,6 +327,6 @@ export const fetchRequiredDoctorInforSuccess = (allRequiredData) => ({
     data: allRequiredData
 })
 
-export const fetchRequiredDoctorInforFailed= () => ({
+export const fetchRequiredDoctorInforFailed = () => ({
     type: actionTypes.FETCH_REQUIRED_DOCTOR_INFOR_FAILED,
 })
