@@ -1,7 +1,7 @@
 import axios from '../axios';
 
 const handleLoginApi = (userEmail, userPassword) => {
-    return axios.post('/api/login', {email: userEmail, password: userPassword });
+    return axios.post('/api/login', { email: userEmail, password: userPassword });
 }
 
 //truy cap 1 bien: ${tenbien}
@@ -25,7 +25,7 @@ const deleteUserService = (userId) => {
 }
 
 const editUserService = (inputData) => {
-    return axios.put('/api/edit-user', inputData); 
+    return axios.put('/api/edit-user', inputData);
 }
 
 const getAllCodeService = (inputType) => {
@@ -41,7 +41,7 @@ const getAllDoctors = () => {
 }
 
 const saveDetailDoctorService = (data) => {
-    return axios.post('/api/save-infor-doctors', data); 
+    return axios.post('/api/save-infor-doctors', data);
 }
 
 const getDetailInforDoctor = (inputId) => {
@@ -80,14 +80,18 @@ const getAllSpecialty = () => {
     return axios.get(`/api/get-specialty`)
 }
 
+const getAllDetailSpecialtyById = (data) => {
+    return axios.get(`/api/get-detail-specialty-by-id?id=${data.id}&location=${data.location}`)
+}
+
 export {
-    handleLoginApi, getAllUsers, 
-    createNewUserService, deleteUserService, 
+    handleLoginApi, getAllUsers,
+    createNewUserService, deleteUserService,
     editUserService, getAllCodeService, getTopDoctorHomeService,
-    getAllDoctors, saveDetailDoctorService, 
-    getDetailInforDoctor, saveBulkScheduleDoctor, 
+    getAllDoctors, saveDetailDoctorService,
+    getDetailInforDoctor, saveBulkScheduleDoctor,
     getScheduleDoctorByDate, getExtraInforDoctorById,
     getProfileDoctorById, postPatientBookAppointment,
-    postVerifyBookAppointment, createNewSpecialty, 
-    getAllSpecialty, 
+    postVerifyBookAppointment, createNewSpecialty,
+    getAllSpecialty, getAllDetailSpecialtyById
 }

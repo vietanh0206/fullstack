@@ -20,16 +20,24 @@ class DoctorSchedule extends Component {
         }
     }
 
-    async componentDidMount () {
+    async componentDidMount() {
         let { language } = this.props;
-        let allDays = this.getArrDays(language);  
+        let allDays = this.getArrDays(language);
+
+        if (this.props.doctorIdFromParent) {
+            let res = await getScheduleDoctorByDate(this.props.doctorIdFromParent, allDays[0].value);
+            this.setState({
+                allAvailableTime: res.data ? res.data : []
+            })
+        }
+
         this.setState({
             allDays: allDays,
         })
 
     }
 
-    capitalizeFirstLetter (string) {
+    capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
@@ -39,7 +47,7 @@ class DoctorSchedule extends Component {
             let object = {};
             if (language === LANGUAGES.VI) {
                 if (i === 0) {
-                    let ddMM =  moment(new Date()).format('DD/MM');
+                    let ddMM = moment(new Date()).format('DD/MM');
                     let today = `Hôm nay - ${ddMM}`;
                     object.label = today;
                 } else {
@@ -49,7 +57,7 @@ class DoctorSchedule extends Component {
 
             } else {
                 if (i === 0) {
-                    let ddMM =  moment(new Date()).format('DD/MM');
+                    let ddMM = moment(new Date()).format('DD/MM');
                     let today = `Today - ${ddMM}`;
                     object.label = today;
                 } else {
@@ -85,14 +93,14 @@ class DoctorSchedule extends Component {
             let res = await getScheduleDoctorByDate(doctorId, date);
 
             if (res && res.errCode === 0) {
-                this.setState ({
+                this.setState({
                     allAvailableTime: res.data ? res.data : []
                 })
             }
             // console.log('check res schedule from react: ', res);
         }
     }
-    
+
     handleClickScheduleTime = (time) => {
         this.setState({
             isOpenModalBooking: true,
@@ -108,7 +116,7 @@ class DoctorSchedule extends Component {
     }
 
     render() {
-        let {allDays, allAvailableTime, isOpenModalBooking, dataScheduleTimeModal } = this.state;
+        let { allDays, allAvailableTime, isOpenModalBooking, dataScheduleTimeModal } = this.state;
         let { language } = this.props;
         return (
             <>
@@ -118,9 +126,9 @@ class DoctorSchedule extends Component {
                             {allDays && allDays.length > 0 &&
                                 allDays.map((item, index) => {
                                     return (
-                                        <option 
+                                        <option
                                             value={item.value}
-                                            key={index} 
+                                            key={index}
                                         >
                                             {item.label}
                                         </option>
@@ -130,26 +138,26 @@ class DoctorSchedule extends Component {
                     </div>
                     <div className='all-available-time'>
                         <div className='text-calendar'>
-                            <i className='fas fa-calendar-alt'> 
+                            <i className='fas fa-calendar-alt'>
                                 <span><FormattedMessage id="patient.detail-doctor.schedule" /></span>
                             </i>
                         </div>
                         <div className='time-content'>
-                            {allAvailableTime && allAvailableTime.length > 0 ? 
+                            {allAvailableTime && allAvailableTime.length > 0 ?
                                 <>
                                     <div className='time-content-btns'>
                                         {allAvailableTime.map((item, index) => {
-                                                let timeDisplay = language === LANGUAGES.VI ?
-                                                    item.timeTypeData.valueVi : item.timeTypeData.valueEn; 
-                                                return (
-                                                    <button 
-                                                        key={index}
-                                                        className={language === LANGUAGES.VI ? 'btn-vie' : 'btn-en'}
-                                                        onClick={()=> this.handleClickScheduleTime(item)}
-                                                        >
-                                                        {timeDisplay}
-                                                    </button>
-                                                )
+                                            let timeDisplay = language === LANGUAGES.VI ?
+                                                item.timeTypeData.valueVi : item.timeTypeData.valueEn;
+                                            return (
+                                                <button
+                                                    key={index}
+                                                    className={language === LANGUAGES.VI ? 'btn-vie' : 'btn-en'}
+                                                    onClick={() => this.handleClickScheduleTime(item)}
+                                                >
+                                                    {timeDisplay}
+                                                </button>
+                                            )
                                         })}
                                     </div>
 
@@ -170,14 +178,14 @@ class DoctorSchedule extends Component {
                     </div>
                 </div>
 
-                <BookingModal 
+                <BookingModal
                     isOpenModal={isOpenModalBooking}
                     closeBookingModal={this.closeBookingModal}
                     dataTime={dataScheduleTimeModal}
                 />
             </>
         );
-    }    
+    }
 }
 
 const mapStateToProps = state => {
@@ -187,7 +195,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return { 
+    return {
     };
 };
 
