@@ -111,5 +111,24 @@
             "select-specialty": "Chọn chuyên khoa",
             "select-clinic": "Chọn phòng khám"
         }
+    },
+    "manage-clinic": {
+        "title": "Quản lý phòng khám",
+        "clinic-name": "Tên phòng khám",
+        "clinic-address": "Địa chỉ phòng khám",
+        "clinic-image": "Ảnh phòng khám",
+        "save": "Lưu thông tin"
+    },
+    "manage-specialty": {
+        "title": "Quản lý chuyên khoa",
+        "specialty-name": "Tên chuyên khoa",
+        "specialty-image": "Ảnh chuyên khoa",
+        "save": "Lưu thông tin"
+    },
+    "manage-handbook": {
+        "title": "Quản lý cẩm nang",
+        "handbook-name": "Tên cẩm nang",
+        "handbook-image": "Ảnh cẩm nang",
+        "save": "Lưu thông tin"
     }
 }

@@ -111,5 +111,24 @@
             "select-specialty": "Specialty",
             "select-clinic": "Clinic"
         }
+    },
+    "manage-clinic": {
+        "title": "Clinic Management",
+        "clinic-name": "Clinic name",
+        "clinic-address": "Clinic address",
+        "clinic-image": "Clinic photo",
+        "save": "Save"
+    },
+    "manage-specialty": {
+        "title": "Specialized management",
+        "specialty-name": "Specialist name",
+        "specialty-image": "Professional photo",
+        "save": "save"
+    },
+    "manage-handbook": {
+        "title": "Manual Management",
+        "handbook-name": "Name of the manual",
+        "handbook-image": "Handbook photo",
+        "save": "save"
     }
 }

@@ -59,37 +59,37 @@ class ManageHandBook extends Component {
         }
     }
 
-    handleSaveNewSpecialty = async () => {
-        let res = await createNewSpecialty(this.state)
-        // console.log('hoi v.anh checkstate:', this.state);
-        if (res && res.errCode === 0) {
-            toast.success('Add new specialty succeeds!')
-            this.setState({
-                name: '',
-                imageBase64: '',
-                descriptionHTML: '',
-                descriptionMarkdown: '',
-            })
-        } else {
-            toast.error('Something wrongs...')
-            // console.log('hoi v.anh check res:', res);
-        }
+    handleSaveNewHandBook = async () => {
+        // let res = await createNewSpecialty(this.state)
+        // // console.log('hoi v.anh checkstate:', this.state);
+        // if (res && res.errCode === 0) {
+        //     toast.success('Add new specialty succeeds!')
+        //     this.setState({
+        //         name: '',
+        //         imageBase64: '',
+        //         descriptionHTML: '',
+        //         descriptionMarkdown: '',
+        //     })
+        // } else {
+        //     toast.error('Something wrongs...')
+        //     // console.log('hoi v.anh check res:', res);
+        // }
     }
 
     render() {
         return (
             <div className='manage-specialty-container'>
-                <div className='ms-title'>Quản lý chuyên khoa</div>
+                <div className='ms-title'><FormattedMessage id="manage-handbook.title" /></div>
 
                 <div className='add-new-specialty row'>
                     <div className='col-6 form-group'>
-                        <label>Tên chuyên khoa</label>
+                        <label><FormattedMessage id="manage-handbook.handbook-name" /></label>
                         <input className='form-control' type='text' value={this.state.name}
                             onChange={(event) => this.handleOnChangeInput(event, 'name')}
                         />
                     </div>
                     <div className='col-6 form-group'>
-                        <label>Ảnh chuyên khoa</label>
+                        <label><FormattedMessage id="manage-handbook.handbook-image" /></label>
                         <input className='form-control-file' type='file'
                             onChange={(event) => this.handleOnchangeImage(event)}
                         />
@@ -104,8 +104,8 @@ class ManageHandBook extends Component {
                     </div>
                     <div className='col-12'>
                         <button className='btn-save-specialty'
-                            onClick={() => this.handleSaveNewSpecialty()}
-                        >Save</button>
+                            onClick={() => this.handleSaveNewHandBook()}
+                        ><FormattedMessage id="manage-handbook.save" /></button>
                     </div>
                 </div>
             </div>

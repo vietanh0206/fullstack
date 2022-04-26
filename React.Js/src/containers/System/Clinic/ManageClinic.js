@@ -5,7 +5,7 @@ import './ManageClinic.scss';
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
 import { CommonUtils } from '../../../utils';
-import { createNewSpecialty } from '../../../services/userService';
+import { createNewClinic } from '../../../services/userService';
 import { toast } from 'react-toastify';
 
 const mdParser = new MarkdownIt(/* Markdown-it options */);
@@ -16,6 +16,7 @@ class ManageClinic extends Component {
         super(props);
         this.state = {
             name: '',
+            address: '',
             imageBase64: '',
             descriptionHTML: '',
             descriptionMarkdown: '',
@@ -59,14 +60,15 @@ class ManageClinic extends Component {
         }
     }
 
-    handleSaveNewSpecialty = async () => {
-        let res = await createNewSpecialty(this.state)
+    handleSaveNewClinic = async () => {
+        let res = await createNewClinic(this.state)
         // console.log('hoi v.anh checkstate:', this.state);
         if (res && res.errCode === 0) {
-            toast.success('Add new specialty succeeds!')
+            toast.success('Add new clinic succeeds!')
             this.setState({
                 name: '',
                 imageBase64: '',
+                address: '',
                 descriptionHTML: '',
                 descriptionMarkdown: '',
             })
@@ -79,19 +81,25 @@ class ManageClinic extends Component {
     render() {
         return (
             <div className='manage-specialty-container'>
-                <div className='ms-title'>Quản lý phòng khám</div>
+                <div className='ms-title'><FormattedMessage id="manage-clinic.title" /></div>
 
                 <div className='add-new-specialty row'>
                     <div className='col-6 form-group'>
-                        <label>Tên phòng khám</label>
+                        <label><FormattedMessage id="manage-clinic.clinic-name" /></label>
                         <input className='form-control' type='text' value={this.state.name}
                             onChange={(event) => this.handleOnChangeInput(event, 'name')}
                         />
                     </div>
                     <div className='col-6 form-group'>
-                        <label>Ảnh phòng khám</label>
+                        <label><FormattedMessage id="manage-clinic.clinic-image" /></label>
                         <input className='form-control-file' type='file'
                             onChange={(event) => this.handleOnchangeImage(event)}
+                        />
+                    </div>
+                    <div className='col-6 form-group'>
+                        <label><FormattedMessage id="manage-clinic.clinic-address" /></label>
+                        <input className='form-control' type='text' value={this.state.address}
+                            onChange={(event) => this.handleOnChangeInput(event, 'address')}
                         />
                     </div>
                     <div className='col-12'>
@@ -104,8 +112,8 @@ class ManageClinic extends Component {
                     </div>
                     <div className='col-12'>
                         <button className='btn-save-specialty'
-                            onClick={() => this.handleSaveNewSpecialty()}
-                        >Save</button>
+                            onClick={() => this.handleSaveNewClinic()}
+                        ><FormattedMessage id="manage-clinic.save" /></button>
                     </div>
                 </div>
             </div>
