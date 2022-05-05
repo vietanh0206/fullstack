@@ -71,7 +71,7 @@
         }
 
         &.section-medical-facility {
-          background-image: url("../../assets/medical-facility/benh-vien-thu-cuc.jpg");
+          // background-image: url("../../assets/medical-facility/benh-vien-thu-cuc.jpg");
         }
 
         &.section-outstanding-doctor {
@@ -132,14 +132,14 @@
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
-    
+
   }
 
   .section-customize {
     padding: 5px;
     font-size: 13px;
-    justify-content:center;
-    align-items:center;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 
     .customize-border {
@@ -176,6 +176,7 @@
 
 .section-about {
   padding: 0 100px;
+
   .section-about-header {
     padding: 20px;
     font-size: 22px;
