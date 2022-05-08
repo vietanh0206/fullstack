@@ -12,13 +12,13 @@ let buildUrlEmail = (doctorId, token) => {
 }
 
 let postBookAppointment = (data) => {
-    return new Promise (async (resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         try {
             // truyền lên email >>> tìm user >>> Có thì trả về user. Nếu k có thì tạo mới  
-            if (!data.email || !data.doctorId || !data.timeType || !data.date 
-                || !data.fullName
-                ) {
-                resolve ({
+            if (!data.email || !data.doctorId || !data.timeType || !data.date
+                || !data.fullName || !data.selectedGender || !data.address
+            ) {
+                resolve({
                     errCode: 1,
                     errMessage: "Missing parameter"
                 })
@@ -40,12 +40,15 @@ let postBookAppointment = (data) => {
                     where: { email: data.email },
                     defaults: {
                         email: data.email,
-                        roleId: 'R3'
-                    }
+                        roleId: 'R3',
+                        gender: data.selectedGender,
+                        address: data.address,
+                        firstName: data.fullName
+                    },
                 });
 
                 //create a booking record
-                if(user && user[0]) {
+                if (user && user[0]) {
                     await db.Booking.findOrCreate({
                         where: { patientId: user[0].id },
                         defaults: {
@@ -56,7 +59,7 @@ let postBookAppointment = (data) => {
                             timeType: data.timeType,
                             token: token
                         }
-                        
+
                     })
                 }
 
@@ -69,13 +72,13 @@ let postBookAppointment = (data) => {
             reject(e)
         }
     })
-} 
+}
 
 let postVerifyBookAppointment = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
             if (!data.token || !data.doctorId) {
-                resolve ({
+                resolve({
                     errCode: 1,
                     errMessage: "Missing parameter"
                 })
@@ -90,18 +93,18 @@ let postVerifyBookAppointment = (data) => {
                     // raw: true >>> trả về obj của Javascript, k phải của obj của sequelize
                     // ->> hàm save line 94 báo lỗi
                 })
-                if (appointment){
+                if (appointment) {
                     appointment.statusId = 'S2';
                     await appointment.save()
-                    
+
                     // Lưu thành công 
-                    resolve ({
+                    resolve({
                         errCode: 0,
                         errMessage: "Update the appointment succeed!"
                     })
                 } else {
                     //Lưu thất bại
-                    resolve ({
+                    resolve({
                         errCode: 2,
                         errMessage: "Appointment has been activated or does not exist"
                     })
