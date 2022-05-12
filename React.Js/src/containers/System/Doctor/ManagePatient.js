@@ -19,14 +19,14 @@ class ManagePatient extends Component {
     async componentDidMount() {
         let { user } = this.props;
         let { currentDate } = this.state;
-        let formatedDate = new Date(currentDate).getTime();
-        this.getDataPatient(user, formatedDate)
+        let formattedDate = new Date(currentDate).getTime();
+        this.getDataPatient(user, formattedDate)
     }
 
-    getDataPatient = async (user, formatedDate) => {
+    getDataPatient = async (user, formattedDate) => {
         let res = await getAllPatientForDoctor({
             doctorId: user.id,
-            date: formatedDate
+            date: formattedDate
         })
         if (res && res.errCode === 0) {
             this.setState({
@@ -48,8 +48,8 @@ class ManagePatient extends Component {
         }, () => {
             let { user } = this.props;
             let { currentDate } = this.state;
-            let formatedDate = new Date(currentDate).getTime();
-            this.getDataPatient(user, formatedDate)
+            let formattedDate = new Date(currentDate).getTime();
+            this.getDataPatient(user, formattedDate)
         })
     }
 
@@ -62,6 +62,8 @@ class ManagePatient extends Component {
     }
 
     render() {
+        console.log('>> hoi vanh: ', this.state)
+        console.log('>> hoi vanh props: ', this.props)
         let { dataPatient } = this.state;
         return (
             <div className='manage-patient-container'>
@@ -83,23 +85,24 @@ class ManagePatient extends Component {
                                 <tr>
                                     <th>STT</th>
                                     <th>Thời gian</th>
-                                    <th>Họ và tên</th>
-                                    <th>Địa chỉ </th>
-                                    <th>Giới tính</th>
-                                    <th>Actions</th>
+                                    <th className='col-2'>Họ và tên</th>
+                                    <th>Giới tính </th>
+                                    <th className='col-4'>Địa chỉ </th>
+                                    <th className='col-2'>Actions</th>
                                 </tr>
                                 {dataPatient && dataPatient.length > 0 ?
                                     dataPatient.map((item, index) => {
                                         return (
                                             <tr key={index}>
                                                 <td>{index + 1}</td>
-                                                <td>{item.timeTypeDatapatient.valueVi}</td>
+                                                <td>{item.timeTypeDataPatient.valueVi}</td>
                                                 <td>{item.patientData.firstName}</td>
-                                                <td>{item.patientData.address}</td>
                                                 <td>{item.patientData.genderData.valueVi}</td>
+                                                <td>{item.patientData.address}</td>
                                                 <td>
                                                     <button className='mp-btn-confirm'
                                                         onClick={() => this.handleBtnConfirm()}>Xác nhận</button>
+
                                                     <button className='mp-btn-remedy'
                                                         onClick={() => this.handleBtnRemedy()}>Gửi hóa đơn</button>
                                                 </td>
@@ -107,9 +110,8 @@ class ManagePatient extends Component {
                                         )
                                     })
                                     :
-                                    <tr>
-                                        no data
-                                    </tr>
+                                    // <tr>no data</tr>
+                                    null
                                 }
                             </tbody>
                         </table>

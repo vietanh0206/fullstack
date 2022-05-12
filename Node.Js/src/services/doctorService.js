@@ -402,7 +402,7 @@ let getListPatientForDoctor = (doctorId, date) => {
                     },
                     include: [
                         {
-                            model: db.User, as: 'patient',
+                            model: db.User, as: 'patientData',
                             attributes: ['email', 'firstName', 'address', 'gender'],
                             include: [
                                 {

@@ -97,7 +97,7 @@ const createNewClinic = (data) => {
 }
 
 const getAllPatientForDoctor = (data) => {
-    return axios.post(`/api/get-list-patient-for-doctor?doctorId=${data.doctorId}&date=${data.date}`)
+    return axios.get(`/api/get-list-patient-for-doctor?doctorId=${data.doctorId}&date=${data.date}`)
 }
 
 export {
