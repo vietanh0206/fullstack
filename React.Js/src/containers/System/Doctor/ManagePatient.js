@@ -62,8 +62,8 @@ class ManagePatient extends Component {
     }
 
     render() {
-        console.log('>> hoi vanh: ', this.state)
-        console.log('>> hoi vanh props: ', this.props)
+        // console.log('>> hoi vanh: ', this.state)
+        // console.log('>> hoi vanh props: ', this.props)
         let { dataPatient } = this.state;
         return (
             <div className='manage-patient-container'>
