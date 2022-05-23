@@ -116,12 +116,11 @@ let sendAttachment = async (dataSend) => {
                         //
                         filename: `remedy-${dataSend.patientId}-${new Date().getTime()}.png`,
                         content: dataSend.imgBase64.split('base64,')[1],
-                        encoding: dataSend.imgBase64
-                    }
-                ]
+                        encoding: 'base64'
+                    },
+                ],
             });
-            console.log('check infor send email: ');
-            // console.log(info);
+            resolve(true)
         } catch (e) {
             reject(e)
         }

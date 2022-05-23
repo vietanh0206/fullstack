@@ -370,7 +370,7 @@ let getProfileDoctorById = (inputId) => {
                 })
 
                 if (data && data.image) {
-                    data.image = new Buffer.from(data.image, 'base64').toString('binary');
+                    data.image = Buffer.from(data.image, 'base64').toString('binary');
                 }
 
                 if (!data) data = {};
@@ -432,7 +432,7 @@ let getListPatientForDoctor = (doctorId, date) => {
 let sendRemedy = (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            if (!data.email || !data.doctorId || !data.patientId) {
+            if (!data.email || !data.doctorId || !data.patientId || !data.imgBase64) {
                 resolve({
                     errCode: 1,
                     errMessage: "Missing require parameters"
