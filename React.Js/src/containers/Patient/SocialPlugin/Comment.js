@@ -53,7 +53,7 @@ class Comment extends Component {
             <>
                 <div className="fb-comments"
                     data-href={dataHref}
-                    data-width={width ? width : ''}
+                    data-width={width ? width : ""}
                     data-numposts={numPost ? numPost : 5}>
 
                 </div>

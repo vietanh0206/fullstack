@@ -54,8 +54,9 @@ class DetailDoctor extends Component {
             nameEn = `${detailDoctor.positionData.valueEn}, ${detailDoctor.firstName} ${detailDoctor.lastName}`;
         }
 
-        let currentURl = process.env.REACT_APP_IS_LOCALHOST === true ?
+        let currentURL = +process.env.REACT_APP_IS_LOCALHOST === 1 ?
             "https://va-restaurant-bot-tv.herokuapp.com/" : window.location.href;
+        console.log('>>> hoi vanh currentURL', currentURL);
         return (
             <>
                 <HomeHeader
@@ -82,7 +83,7 @@ class DetailDoctor extends Component {
                                 }
                                 <div className='like-share-plugin'>
                                     <LikeAndShare
-                                        dataHref={currentURl}
+                                        dataHref={currentURL}
                                     />
                                 </div>
                             </div>
@@ -110,7 +111,7 @@ class DetailDoctor extends Component {
                     </div>
                     <div className='comment-doctor'>
                         <Comment
-                            dataHref={currentURl}
+                            dataHref={currentURL}
                             width={'100%'}
                         />
                     </div>
